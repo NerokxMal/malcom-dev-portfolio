@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Malcom Camilo García Ortegón - Backend Developer">
+	<main class="max-w-4xl mx-auto px-6 py-12 md:py-20 space-y-20">
+		
+		<!-- Hero Section -->
+		<section class="space-y-4">
+			<h1 class="text-5xl md:text-6xl font-bold tracking-tight">Malcom Camilo García Ortegón</h1>
+			<h2 class="text-2xl text-primary font-semibold">Backend Developer — Java & Spring Boot</h2>
+			<p class="text-gray-400 text-lg max-w-2xl">Tecnólogo ADSI enfocado en construir soluciones backend escalables. Apasionado por el código limpio y el aprendizaje constante.</p>
+			<div class="flex gap-4 pt-4">
+				<a href="https://github.com/NerokxMal" target="_blank" class="bg-primary text-white px-6 py-2 rounded-md font-medium hover:bg-orange-700 transition">Ver GitHub</a>
+				<a href="/cv.pdf" class="border border-primary text-primary px-6 py-2 rounded-md font-medium hover:bg-primary hover:text-white transition">Descargar CV</a>
+			</div>
+		</section>
+
+		<!-- Sobre Mí -->
+		<section class="space-y-4">
+			<h3 class="text-2xl font-bold text-primary">Sobre mí</h3>
+			<p class="text-gray-300 leading-relaxed max-w-3xl">Tecnólogo ADSI (SENA) con un fuerte enfoque en Java y el ecosistema Spring Boot. Me especializo en el desarrollo backend, buscando siempre la eficiencia y robustez. Actualmente, estoy dedicado a construir proyectos reales que desafíen mis habilidades y me permitan crecer profesionalmente.</p>
+		</section>
+
+		<!-- Proyectos -->
+		<section class="space-y-8">
+			<h3 class="text-2xl font-bold text-primary">Proyectos</h3>
+			<div class="grid md:grid-cols-3 gap-6">
+				<!-- Sm4rt Stock -->
+				<div class="border border-gray-700 p-6 rounded-lg space-y-4 hover:border-primary transition">
+					<h4 class="text-xl font-bold">sm4rt-stock</h4>
+					<p class="text-gray-400 text-sm">Sistema de gestión de inventario robusto y eficiente.</p>
+					<div class="flex flex-wrap gap-2">
+						<span class="text-xs bg-gray-800 px-2 py-1 rounded">Java</span>
+						<span class="text-xs bg-gray-800 px-2 py-1 rounded">Spring Boot 3</span>
+						<span class="text-xs bg-gray-800 px-2 py-1 rounded">Astro</span>
+					</div>
+					<a href="https://github.com/NerokxMal/sm4rt-stock" target="_blank" class="text-primary text-sm font-medium hover:underline block">Ver en GitHub →</a>
+				</div>
+				<!-- Sistema de Reservas -->
+				<div class="border border-gray-700 p-6 rounded-lg space-y-4 hover:border-primary transition opacity-70">
+					<h4 class="text-xl font-bold">Sistema de Reservas</h4>
+					<p class="text-gray-400 text-sm italic">Próximamente</p>
+				</div>
+				<!-- Bot Twitch -->
+				<div class="border border-gray-700 p-6 rounded-lg space-y-4 hover:border-primary transition">
+					<h4 class="text-xl font-bold">Bot !habla para Twitch</h4>
+					<p class="text-gray-400 text-sm">Bot interactivo con Node.js, WebSockets y TTS. Posee dashboard propio.</p>
+					<div class="flex flex-wrap gap-2">
+						<span class="text-xs bg-gray-800 px-2 py-1 rounded">Node.js</span>
+						<span class="text-xs bg-gray-800 px-2 py-1 rounded">WebSockets</span>
+						<span class="text-xs bg-gray-800 px-2 py-1 rounded">TTS</span>
+					</div>
+					<a href="https://github.com/NerokxMal/bot-de-twitch-que-hable" target="_blank" class="text-primary text-sm font-medium hover:underline block">Ver en GitHub →</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Stack Técnico -->
+		<section class="space-y-4">
+			<h3 class="text-2xl font-bold text-primary">Stack Técnico</h3>
+			<ul class="flex flex-wrap gap-3 text-gray-300">
+				{['Java', 'Spring Boot', 'Spring Security', 'MySQL', 'JWT', 'Astro', 'TypeScript', 'Git', 'Docker'].map(tech => (
+					<li class="bg-gray-800 px-3 py-1 rounded-full text-sm">{tech}</li>
+				))}
+			</ul>
+		</section>
+
+		<!-- Contacto -->
+		<section class="space-y-4">
+			<h3 class="text-2xl font-bold text-primary">Contacto</h3>
+			<p class="text-gray-300">¿Interesado en trabajar juntos o tienes alguna pregunta?</p>
+			<div class="flex flex-col gap-2">
+				<a href="mailto:malcomgarciaortegon@gmail.com" class="text-gray-300 hover:text-primary transition">📧 malcomgarciaortegon@gmail.com</a>
+				<a href="https://github.com/NerokxMal" target="_blank" class="text-gray-300 hover:text-primary transition">🐙 github.com/NerokxMal</a>
+				<a href="#" class="text-gray-300 hover:text-primary transition">💼 LinkedIn (Enlace aquí)</a>
+			</div>
+		</section>
+
+	</main>
+</Layout>
