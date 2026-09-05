@@ -1,0 +1,69 @@
+---
+---
+
+<div id="boot-screen" class="fixed inset-0 z-50 bg-[#12181F] flex flex-col justify-between p-6 sm:p-12 font-mono text-[#FF8A4C] transition-opacity duration-500 ease-out">
+  <div class="space-y-2 text-xs sm:text-sm text-gray-400">
+    <p class="text-gray-500">SYSTEM BOOT v2.6.4 — ARCH: x86_64-java</p>
+    <p class="text-gray-500">MEM: 16384MB / SPRING_BOOT_ENV: production</p>
+  </div>
+
+  <div class="max-w-xl w-full space-y-3 my-auto">
+    <div id="terminal-lines" class="space-y-2 text-sm sm:text-base">
+      <p class="line opacity-0 translate-y-1 transition-all duration-300" data-delay="100">> inicializando entorno JVM y dependencias...</p>
+      <p class="line opacity-0 translate-y-1 transition-all duration-300" data-delay="600">> cargando módulos Spring Security y JWT...</p>
+      <p class="line opacity-0 translate-y-1 transition-all duration-300" data-delay="1200">> iniciando portafolio...</p>
+      <p class="line opacity-0 translate-y-1 transition-all duration-300 text-[#FF8A4C] font-semibold" data-delay="1700">> listo. Acceso concedido.</p>
+    </div>
+  </div>
+
+  <div class="flex justify-between items-center text-xs text-gray-500">
+    <span>SECURE CONNECTION ESTABLISHED</span>
+    <span class="animate-pulse">[ Click o presiona cualquier tecla para omitir ]</span>
+  </div>
+</div>
+
+<script>
+  function initBootScreen() {
+    const bootScreen = document.getElementById('boot-screen');
+    if (!bootScreen) return;
+
+    // Check if already booted in this session to avoid annoyance on quick refreshes, 
+    // but user requested boot screen so let's show it or respect session. 
+    // Actually, showing it per session or always is good. Let's show it always on load, with instant skip.
+    
+    const lines = bootScreen.querySelectorAll('.line');
+    let timeouts: number[] = [];
+
+    lines.forEach((line) => {
+      const delay = parseInt(line.getAttribute('data-delay') || '0', 10);
+      const t = window.setTimeout(() => {
+        line.classList.remove('opacity-0', 'translate-y-1');
+        line.classList.add('opacity-100', 'translate-y-0');
+      }, delay);
+      timeouts.push(t);
+    });
+
+    const dismissBoot = () => {
+      timeouts.forEach(clearTimeout);
+      bootScreen.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        bootScreen.remove();
+      }, 500);
+      window.removeEventListener('keydown', dismissBoot);
+      window.removeEventListener('click', dismissBoot);
+    };
+
+    // Auto dismiss after 2300ms
+    const autoDismiss = window.setTimeout(dismissBoot, 2300);
+    timeouts.push(autoDismiss);
+
+    window.addEventListener('keydown', dismissBoot, { once: true });
+    window.addEventListener('click', dismissBoot, { once: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBootScreen);
+  } else {
+    initBootScreen();
+  }
+</script>

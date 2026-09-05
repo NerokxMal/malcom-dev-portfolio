@@ -1,0 +1,50 @@
+---
+---
+
+<header class="fixed top-4 left-0 right-0 z-40 flex justify-center px-4 pointer-events-none">
+  <nav class="pointer-events-auto bg-[#17202A]/90 backdrop-blur-md border border-[#243343] px-4 sm:px-6 py-2.5 rounded-full shadow-2xl flex items-center gap-1 sm:gap-3 text-xs sm:text-sm font-medium">
+    <a href="#hero" class="nav-link px-3 py-1.5 rounded-full text-slate-300 hover:text-[#FF8A4C] transition-colors" data-target="hero">Inicio</a>
+    <a href="#about" class="nav-link px-3 py-1.5 rounded-full text-slate-300 hover:text-[#FF8A4C] transition-colors" data-target="about">Sobre mí</a>
+    <a href="#projects" class="nav-link px-3 py-1.5 rounded-full text-slate-300 hover:text-[#FF8A4C] transition-colors" data-target="projects">Proyectos</a>
+    <a href="#stack" class="nav-link px-3 py-1.5 rounded-full text-slate-300 hover:text-[#FF8A4C] transition-colors" data-target="stack">Stack</a>
+    <a href="#contact" class="nav-link px-3 py-1.5 rounded-full text-slate-300 hover:text-[#FF8A4C] transition-colors" data-target="contact">Contacto</a>
+  </nav>
+</header>
+
+<script>
+  function initNavbar() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    if (sections.length === 0 || navLinks.length === 0) return;
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach((link) => {
+            if (link.getAttribute('data-target') === id) {
+              link.classList.add('bg-[#FF8A4C]/15', 'text-[#FF8A4C]', 'shadow-sm');
+            } else {
+              link.classList.remove('bg-[#FF8A4C]/15', 'text-[#FF8A4C]', 'shadow-sm');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNavbar);
+  } else {
+    initNavbar();
+  }
+</script>
